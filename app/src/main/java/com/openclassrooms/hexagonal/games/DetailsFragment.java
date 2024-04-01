@@ -9,15 +9,15 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
-import com.openclassrooms.hexagonal.games.databinding.FragmentSecondBinding;
+import com.openclassrooms.hexagonal.games.databinding.FragmentDetailsBinding;
 import dagger.hilt.android.AndroidEntryPoint;
 
 @AndroidEntryPoint
-public class SecondFragment
+public class DetailsFragment
     extends Fragment
 {
 
-  private FragmentSecondBinding binding;
+  private FragmentDetailsBinding binding;
 
   @Override
   public View onCreateView(
@@ -26,7 +26,7 @@ public class SecondFragment
   )
   {
 
-    binding = FragmentSecondBinding.inflate(inflater, container, false);
+    binding = FragmentDetailsBinding.inflate(inflater, container, false);
     return binding.getRoot();
 
   }
@@ -36,7 +36,7 @@ public class SecondFragment
     super.onViewCreated(view, savedInstanceState);
 
     binding.buttonSecond.setOnClickListener(v ->
-        NavHostFragment.findNavController(SecondFragment.this)
+        NavHostFragment.findNavController(DetailsFragment.this)
             .navigate(R.id.action_SecondFragment_to_FirstFragment)
     );
   }
