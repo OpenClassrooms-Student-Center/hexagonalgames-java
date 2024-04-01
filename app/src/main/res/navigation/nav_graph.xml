@@ -9,7 +9,7 @@
 
   <fragment
     android:id="@+id/HomefeedFragment"
-    android:name="com.openclassrooms.hexagonal.games.HomefeedFragment"
+    android:name="com.openclassrooms.hexagonal.games.ui.homefeed.HomefeedFragment"
     android:label="@string/homefeed_fragment_label"
     tools:layout="@layout/fragment_homefeed"
     >
@@ -21,7 +21,7 @@
   </fragment>
   <fragment
     android:id="@+id/DetailsFragment"
-    android:name="com.openclassrooms.hexagonal.games.DetailsFragment"
+    android:name="com.openclassrooms.hexagonal.games.ui.details.DetailsFragment"
     android:label="@string/details_fragment_label"
     tools:layout="@layout/fragment_details"
     >

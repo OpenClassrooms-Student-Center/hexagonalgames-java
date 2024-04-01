@@ -1,4 +1,4 @@
-package com.openclassrooms.hexagonal.games;
+package com.openclassrooms.hexagonal.games.ui;
 
 import android.os.Bundle;
 import android.view.Menu;
@@ -12,6 +12,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.snackbar.Snackbar;
+import com.openclassrooms.hexagonal.games.R;
 import com.openclassrooms.hexagonal.games.databinding.ActivityMainBinding;
 import dagger.hilt.android.AndroidEntryPoint;
 

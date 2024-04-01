@@ -1,4 +1,4 @@
-package com.openclassrooms.hexagonal.games;
+package com.openclassrooms.hexagonal.games.ui.details;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,18 +9,16 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
-import com.openclassrooms.hexagonal.games.databinding.FragmentHomefeedBinding;
+import com.openclassrooms.hexagonal.games.R;
+import com.openclassrooms.hexagonal.games.databinding.FragmentDetailsBinding;
 import dagger.hilt.android.AndroidEntryPoint;
 
-/**
- *
- */
 @AndroidEntryPoint
-public class HomefeedFragment
+public class DetailsFragment
     extends Fragment
 {
 
-  private FragmentHomefeedBinding binding;
+  private FragmentDetailsBinding binding;
 
   @Override
   public View onCreateView(
@@ -29,7 +27,7 @@ public class HomefeedFragment
   )
   {
 
-    binding = FragmentHomefeedBinding.inflate(inflater, container, false);
+    binding = FragmentDetailsBinding.inflate(inflater, container, false);
     return binding.getRoot();
 
   }
@@ -38,9 +36,9 @@ public class HomefeedFragment
   {
     super.onViewCreated(view, savedInstanceState);
 
-    binding.buttonFirst.setOnClickListener(v ->
-        NavHostFragment.findNavController(HomefeedFragment.this)
-            .navigate(R.id.action_FirstFragment_to_SecondFragment)
+    binding.buttonSecond.setOnClickListener(v ->
+        NavHostFragment.findNavController(DetailsFragment.this)
+            .navigate(R.id.action_SecondFragment_to_FirstFragment)
     );
   }
 
