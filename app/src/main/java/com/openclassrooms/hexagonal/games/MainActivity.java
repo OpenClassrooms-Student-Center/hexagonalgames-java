@@ -13,7 +13,9 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.openclassrooms.hexagonal.games.databinding.ActivityMainBinding;
+import dagger.hilt.android.AndroidEntryPoint;
 
+@AndroidEntryPoint
 public class MainActivity
     extends AppCompatActivity
 {

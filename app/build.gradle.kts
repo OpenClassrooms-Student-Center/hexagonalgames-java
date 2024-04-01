@@ -1,5 +1,6 @@
 plugins {
   alias(libs.plugins.androidApplication)
+  alias(libs.plugins.hilt)
 }
 
 android {
@@ -38,6 +39,8 @@ dependencies {
   implementation(libs.constraintlayout)
   implementation(libs.navigation.fragment)
   implementation(libs.navigation.ui)
+  implementation(libs.hilt)
+  annotationProcessor(libs.hilt.compiler)
   testImplementation(libs.junit)
   androidTestImplementation(libs.ext.junit)
   androidTestImplementation(libs.espresso.core)

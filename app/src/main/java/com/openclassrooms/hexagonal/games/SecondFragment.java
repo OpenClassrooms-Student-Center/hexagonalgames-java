@@ -10,7 +10,9 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.openclassrooms.hexagonal.games.databinding.FragmentSecondBinding;
+import dagger.hilt.android.AndroidEntryPoint;
 
+@AndroidEntryPoint
 public class SecondFragment
     extends Fragment
 {
