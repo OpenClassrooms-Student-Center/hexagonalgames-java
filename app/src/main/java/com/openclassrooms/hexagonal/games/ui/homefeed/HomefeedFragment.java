@@ -10,14 +10,18 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.openclassrooms.hexagonal.games.R;
 import com.openclassrooms.hexagonal.games.databinding.FragmentHomefeedBinding;
+import com.openclassrooms.hexagonal.games.domain.model.Post;
+import com.openclassrooms.hexagonal.games.ui.homefeed.HomefeedAdapter.OnPostClickListener;
 import dagger.hilt.android.AndroidEntryPoint;
 
 @AndroidEntryPoint
 public final class HomefeedFragment
     extends Fragment
+    implements OnPostClickListener
 {
 
   private FragmentHomefeedBinding binding;
@@ -42,11 +46,13 @@ public final class HomefeedFragment
     setupViewModel();
 
     observePosts();
+  }
 
-    //    binding.buttonFirst.setOnClickListener(v ->
-    //        NavHostFragment.findNavController(HomefeedFragment.this)
-    //            .navigate(R.id.action_FirstFragment_to_SecondFragment)
-    //    );
+  @Override
+  public void onClick(Post post)
+  {
+    //TODO
+    NavHostFragment.findNavController(this).navigate(R.id.action_FirstFragment_to_SecondFragment);
   }
 
   private void observePosts()
@@ -63,7 +69,7 @@ public final class HomefeedFragment
 
   private void setupUI()
   {
-    adapter = new HomefeedAdapter(new ArrayList<>());
+    adapter = new HomefeedAdapter(new ArrayList<>(), this);
     binding.recyclerView.setAdapter(adapter);
     binding.recyclerView.addItemDecoration(new HomefeedItemDecoration(getResources().getDimensionPixelSize(R.dimen.padding_xs)));
     binding.recyclerView.setHasFixedSize(true);

@@ -24,6 +24,13 @@ public final class HomefeedAdapter
     extends Adapter<PostViewHolder>
 {
 
+  public interface OnPostClickListener
+  {
+
+    void onClick(Post post);
+
+  }
+
   public static final class PostViewHolder
       extends ViewHolder
   {
@@ -46,7 +53,7 @@ public final class HomefeedAdapter
       this.image = binding.image;
     }
 
-    public void bind(Post post)
+    public void bind(Post post, OnPostClickListener clickListener)
     {
       username.setText("TODO");
 
@@ -70,15 +77,24 @@ public final class HomefeedAdapter
         image.setVisibility(View.GONE);
       }
 
+      itemView.setOnClickListener(v -> {
+        clickListener.onClick(post);
+      });
+
     }
   }
 
   @NonNull
   private List<Post> posts;
 
-  public HomefeedAdapter(@NonNull List<Post> posts)
+  @NonNull
+  private OnPostClickListener onPostClickListener;
+
+  public HomefeedAdapter(@NonNull List<Post> posts,
+      @NonNull OnPostClickListener onPostClickListener)
   {
     this.posts = posts;
+    this.onPostClickListener = onPostClickListener;
   }
 
   @NonNull
@@ -92,7 +108,7 @@ public final class HomefeedAdapter
   @Override
   public void onBindViewHolder(@NonNull PostViewHolder holder, int position)
   {
-    holder.bind(posts.get(position));
+    holder.bind(posts.get(position), onPostClickListener);
   }
 
   @Override
