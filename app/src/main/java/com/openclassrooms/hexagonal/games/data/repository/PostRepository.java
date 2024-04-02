@@ -24,7 +24,7 @@ public final class PostRepository
 
   public LiveData<List<Post>> getPosts()
   {
-    return new MutableLiveData<>(postApi.getPosts());
+    return new MutableLiveData<>(postApi.getPostsOrderByCreationDateDesc());
   }
 
 }

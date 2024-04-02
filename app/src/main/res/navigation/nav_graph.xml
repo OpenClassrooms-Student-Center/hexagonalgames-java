@@ -19,6 +19,7 @@
       app:destination="@id/DetailsFragment"
       />
   </fragment>
+
   <fragment
     android:id="@+id/DetailsFragment"
     android:name="com.openclassrooms.hexagonal.games.ui.details.DetailsFragment"
@@ -31,4 +32,16 @@
       app:destination="@id/HomefeedFragment"
       />
   </fragment>
+
+  <fragment
+    android:id="@+id/SettingsFragment"
+    android:name="com.openclassrooms.hexagonal.games.ui.settings.SettingsFragment"
+    android:label="@string/action_settings"
+    tools:layout="@layout/fragment_settings"
+    />
+
+  <action
+    android:id="@+id/action_global_SettingsFragment"
+    app:destination="@id/SettingsFragment"
+    />
 </navigation>

@@ -1,6 +1,8 @@
 package com.openclassrooms.hexagonal.games.ui;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
@@ -24,6 +26,8 @@ public final class MainActivity
 
   private ActivityMainBinding binding;
 
+  private NavController navController;
+
   @Override
   protected void onCreate(Bundle savedInstanceState)
   {
@@ -34,7 +38,7 @@ public final class MainActivity
 
     setSupportActionBar(binding.toolbar);
 
-    final NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
+    navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
     appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
     NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
@@ -44,9 +48,34 @@ public final class MainActivity
   }
 
   @Override
+  public boolean onCreateOptionsMenu(Menu menu)
+  {
+    // Inflate the menu; this adds items to the action bar if it is present.
+    getMenuInflater().inflate(R.menu.menu_main, menu);
+    return true;
+  }
+
+  @Override
+  public boolean onOptionsItemSelected(MenuItem item)
+  {
+    // Handle action bar item clicks here. The action bar will
+    // automatically handle clicks on the Home/Up button, so long
+    // as you specify a parent activity in AndroidManifest.xml.
+    int id = item.getItemId();
+
+    //noinspection SimplifiableIfStatement
+    if (id == R.id.action_settings)
+    {
+      navController.navigate(R.id.action_global_SettingsFragment);
+      return true;
+    }
+
+    return super.onOptionsItemSelected(item);
+  }
+
+  @Override
   public boolean onSupportNavigateUp()
   {
-    final NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
     return NavigationUI.navigateUp(navController, appBarConfiguration) || super.onSupportNavigateUp();
   }
 

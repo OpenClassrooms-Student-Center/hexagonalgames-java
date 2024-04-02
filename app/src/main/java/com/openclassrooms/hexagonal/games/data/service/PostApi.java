@@ -7,6 +7,6 @@ import com.openclassrooms.hexagonal.games.domain.model.Post;
 public interface PostApi
 {
 
-  List<Post> getPosts();
+  List<Post> getPostsOrderByCreationDateDesc();
 
 }

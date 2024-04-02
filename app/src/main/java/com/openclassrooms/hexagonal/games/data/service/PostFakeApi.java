@@ -21,7 +21,7 @@ public final class PostFakeApi
   };
 
   @Override
-  public List<Post> getPosts()
+  public List<Post> getPostsOrderByCreationDateDesc()
   {
     return posts;
   }
