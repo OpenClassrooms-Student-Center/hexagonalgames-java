@@ -20,7 +20,7 @@ import dagger.hilt.android.AndroidEntryPoint;
  * Main Activity of the application.
  */
 @AndroidEntryPoint
-public class MainActivity
+public final class MainActivity
     extends AppCompatActivity
 {
 

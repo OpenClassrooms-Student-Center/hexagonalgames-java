@@ -4,11 +4,14 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+
 import com.openclassrooms.hexagonal.games.data.service.PostApi;
 import com.openclassrooms.hexagonal.games.domain.model.Post;
 
 @Singleton
-public class PostRepository
+public final class PostRepository
 {
 
   private final PostApi postApi;
@@ -19,9 +22,9 @@ public class PostRepository
     this.postApi = postApi;
   }
 
-  public List<Post> getPosts()
+  public LiveData<List<Post>> getPosts()
   {
-    return postApi.getPosts();
+    return new MutableLiveData<>(postApi.getPosts());
   }
 
 }

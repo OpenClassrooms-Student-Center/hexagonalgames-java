@@ -8,7 +8,7 @@ import dagger.hilt.android.HiltAndroidApp;
  * The main application class for the Hegaxonal Games project.
  */
 @HiltAndroidApp
-public class HexagonalGamesApplication
+public final class HexagonalGamesApplication
     extends Application
 {
 }

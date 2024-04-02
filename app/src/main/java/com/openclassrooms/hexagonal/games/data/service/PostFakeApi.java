@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.openclassrooms.hexagonal.games.domain.model.Post;
 
-public class PostFakeApi
+public final class PostFakeApi
     implements PostApi
 {
 

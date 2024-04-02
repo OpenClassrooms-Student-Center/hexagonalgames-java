@@ -14,7 +14,7 @@ import com.openclassrooms.hexagonal.games.databinding.FragmentDetailsBinding;
 import dagger.hilt.android.AndroidEntryPoint;
 
 @AndroidEntryPoint
-public class DetailsFragment
+public final class DetailsFragment
     extends Fragment
 {
 
