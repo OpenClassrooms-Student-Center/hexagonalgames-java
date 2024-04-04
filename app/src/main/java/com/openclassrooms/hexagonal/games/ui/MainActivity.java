@@ -41,10 +41,6 @@ public final class MainActivity
     navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
     appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
     NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-
-    binding.fab.setOnClickListener(view -> {
-      navController.navigate(R.id.action_global_AddFragment);
-    });
   }
 
   @Override

@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.openclassrooms.hexagonal.games.R;
 import com.openclassrooms.hexagonal.games.databinding.FragmentHomefeedBinding;
@@ -71,6 +72,10 @@ public final class HomefeedFragment
     binding.recyclerView.setAdapter(adapter);
     binding.recyclerView.addItemDecoration(new HomefeedItemDecoration(getResources().getDimensionPixelSize(R.dimen.padding_xs)));
     binding.recyclerView.setHasFixedSize(true);
+
+    binding.fab.setOnClickListener(view -> {
+      NavHostFragment.findNavController(this).navigate(R.id.action_global_AddFragment);
+    });
   }
 
   @Override
