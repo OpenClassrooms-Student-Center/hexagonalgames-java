@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.fragment.NavHostFragment;
 
 import com.openclassrooms.hexagonal.games.R;
 import com.openclassrooms.hexagonal.games.databinding.FragmentHomefeedBinding;
@@ -51,8 +50,7 @@ public final class HomefeedFragment
   @Override
   public void onClick(Post post)
   {
-    //TODO
-    NavHostFragment.findNavController(this).navigate(R.id.action_FirstFragment_to_SecondFragment);
+    //TODO: display the details and the comments associated with the post
   }
 
   private void observePosts()

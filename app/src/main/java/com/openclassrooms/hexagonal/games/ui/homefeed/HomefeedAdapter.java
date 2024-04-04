@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView.Adapter;
 import androidx.recyclerview.widget.RecyclerView.ViewHolder;
 
 import com.bumptech.glide.Glide;
+import com.openclassrooms.hexagonal.games.R;
 import com.openclassrooms.hexagonal.games.databinding.ItemPostBinding;
 import com.openclassrooms.hexagonal.games.domain.model.Post;
 import com.openclassrooms.hexagonal.games.ui.homefeed.HomefeedAdapter.PostViewHolder;
@@ -55,7 +56,7 @@ public final class HomefeedAdapter
 
     public void bind(Post post, OnPostClickListener clickListener)
     {
-      username.setText("TODO");
+      username.setText(itemView.getContext().getString(R.string.by, post.author.firstname, post.author.lastname));
 
       title.setText(post.title);
 
