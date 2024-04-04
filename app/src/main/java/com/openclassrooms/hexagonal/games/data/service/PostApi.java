@@ -9,4 +9,6 @@ public interface PostApi
 
   List<Post> getPostsOrderByCreationDateDesc();
 
+  void addPost(Post post);
+
 }

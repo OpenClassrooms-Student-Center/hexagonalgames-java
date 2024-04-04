@@ -43,7 +43,7 @@ public final class MainActivity
     NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
     binding.fab.setOnClickListener(view -> {
-      //TODO
+      navController.navigate(R.id.action_global_AddFragment);
     });
   }
 

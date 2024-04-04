@@ -38,4 +38,10 @@ public final class PostFakeApi
     return posts;
   }
 
+  @Override
+  public void addPost(Post post)
+  {
+    posts.add(post);
+  }
+
 }

@@ -27,4 +27,9 @@ public final class PostRepository
     return new MutableLiveData<>(postApi.getPostsOrderByCreationDateDesc());
   }
 
+  public void addPost(Post post)
+  {
+    postApi.addPost(post);
+  }
+
 }
