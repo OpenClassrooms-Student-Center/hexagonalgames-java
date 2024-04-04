@@ -15,17 +15,27 @@ import com.openclassrooms.hexagonal.games.databinding.ActivityMainBinding;
 import dagger.hilt.android.AndroidEntryPoint;
 
 /**
- * Main Activity of the application.
+ * Main activity for the application. This activity serves as the entry point and container for the navigation
+ * fragment. It handles setting up the toolbar, navigation controller, and action bar behavior.
  */
 @AndroidEntryPoint
 public final class MainActivity
     extends AppCompatActivity
 {
 
+  /**
+   * Configuration object for the AppBar in the activity.
+   */
   private AppBarConfiguration appBarConfiguration;
 
+  /**
+   * View binding object for the activity's layout (activity_main.xml).
+   */
   private ActivityMainBinding binding;
 
+  /**
+   * Navigation controller instance for managing app navigation.
+   */
   private NavController navController;
 
   @Override

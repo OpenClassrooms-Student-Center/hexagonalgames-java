@@ -5,7 +5,9 @@ import android.app.Application;
 import dagger.hilt.android.HiltAndroidApp;
 
 /**
- * The main application class for the Hegaxonal Games project.
+ * The application class for the Hexagonal Games application.
+ * This class serves as the entry point for the application and can be used for global application-level
+ * initialization tasks such as dependency injection setup using Hilt.
  */
 @HiltAndroidApp
 public final class HexagonalGamesApplication

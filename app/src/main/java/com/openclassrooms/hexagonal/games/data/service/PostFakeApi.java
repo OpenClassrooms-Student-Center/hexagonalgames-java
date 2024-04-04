@@ -7,6 +7,11 @@ import java.util.List;
 import com.openclassrooms.hexagonal.games.domain.model.Post;
 import com.openclassrooms.hexagonal.games.domain.model.User;
 
+/**
+ * This class implements the PostApi interface and provides a fake in-memory data source for Posts.
+ * It's intended for testing purposes and simulates a real API by holding sample Post and User data
+ * within ArrayLists.
+ */
 public final class PostFakeApi
     implements PostApi
 {

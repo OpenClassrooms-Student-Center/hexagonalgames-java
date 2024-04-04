@@ -12,13 +12,22 @@ import androidx.lifecycle.ViewModelProvider;
 import com.openclassrooms.hexagonal.games.databinding.FragmentSettingsBinding;
 import dagger.hilt.android.AndroidEntryPoint;
 
+/**
+ * This fragment represents the Settings screen in the application. It allows users to enable or disable notifications.
+ */
 @AndroidEntryPoint
 public final class SettingsFragment
     extends Fragment
 {
 
+  /**
+   * View binding object for the fragment's layout (fragment_settings.xml).
+   */
   private FragmentSettingsBinding binding;
 
+  /**
+   * ViewModel responsible for handling data and events related to application settings.
+   */
   private SettingsViewModel viewModel;
 
   @Override
@@ -29,6 +38,7 @@ public final class SettingsFragment
     return binding.getRoot();
   }
 
+  @Override
   public void onViewCreated(@NonNull View view, Bundle savedInstanceState)
   {
     super.onViewCreated(view, savedInstanceState);
@@ -37,11 +47,17 @@ public final class SettingsFragment
     setupViewModel();
   }
 
+  /**
+   * Retrieves the SettingsViewModel instance for this fragment.
+   */
   private void setupViewModel()
   {
     viewModel = new ViewModelProvider(this).get(SettingsViewModel.class);
   }
 
+  /**
+   * Initializes UI elements and sets up click listeners for the notification toggle buttons.
+   */
   private void setupUI()
   {
     binding.notificationEnable.setOnClickListener(v -> {
