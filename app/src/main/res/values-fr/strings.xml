@@ -1,0 +1,6 @@
+<resources>
+  <string name="app_name">Hexagonal Games</string>
+  <string name="action_settings">Paramètres</string>
+  <string name="homefeed_fragment_label">Home</string>
+  <string name="by">Par %1$s %2$s</string>
+</resources>
