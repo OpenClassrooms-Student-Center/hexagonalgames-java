@@ -4,10 +4,15 @@ import java.util.ArrayList;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.core.view.MenuHost;
+import androidx.core.view.MenuProvider;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
@@ -25,7 +30,7 @@ import dagger.hilt.android.AndroidEntryPoint;
 @AndroidEntryPoint
 public final class HomefeedFragment
     extends Fragment
-    implements OnPostClickListener
+    implements OnPostClickListener, MenuProvider
 {
 
   /**
@@ -56,6 +61,7 @@ public final class HomefeedFragment
   {
     super.onViewCreated(view, savedInstanceState);
 
+    setupMenu();
     setupUI();
     setupViewModel();
 
@@ -66,6 +72,27 @@ public final class HomefeedFragment
   public void onClick(Post post)
   {
     //TODO: display the details and the comments associated with the post
+  }
+
+  @Override
+  public void onCreateMenu(@NonNull Menu menu, @NonNull MenuInflater menuInflater)
+  {
+    menuInflater.inflate(R.menu.menu_main, menu);
+  }
+
+  @Override
+  public boolean onMenuItemSelected(@NonNull MenuItem menuItem)
+  {
+    int id = menuItem.getItemId();
+
+    //noinspection SimplifiableIfStatement
+    if (id == R.id.action_settings)
+    {
+      NavHostFragment.findNavController(this).navigate(R.id.action_HomefeedFragment_to_SettingsFragment);
+      return true;
+    }
+
+    return false;
   }
 
   /**
@@ -84,6 +111,14 @@ public final class HomefeedFragment
   private void setupViewModel()
   {
     viewModel = new ViewModelProvider(this).get(HomefeedViewModel.class);
+  }
+
+  /**
+   * Initializes the menu.
+   */
+  private void setupMenu()
+  {
+    ((MenuHost) requireActivity()).addMenuProvider(this, getViewLifecycleOwner());
   }
 
   /**
