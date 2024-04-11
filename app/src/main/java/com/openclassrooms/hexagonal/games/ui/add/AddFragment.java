@@ -1,15 +1,20 @@
 package com.openclassrooms.hexagonal.games.ui.add;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.StringRes;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.openclassrooms.hexagonal.games.databinding.FragmentAddBinding;
+
 import dagger.hilt.android.AndroidEntryPoint;
 
 /**
@@ -49,6 +54,28 @@ public final class AddFragment
 
     setupUI();
     setupViewModel();
+    observeErrors();
+  }
+
+  private void observeErrors() {
+    viewModel.error.observe(getViewLifecycleOwner(), formError -> {
+      if (formError == null) {
+        cleanUpErrors();
+      } else if (formError instanceof FormError.TitleError) {
+        displayTitleError(formError.messageRes);
+      }
+    });
+  }
+
+  private void displayTitleError(@StringRes int messageRes) {
+    cleanUpErrors();
+    binding.fab.setEnabled(false);
+    binding.titleContainer.setError(getString(messageRes));
+  }
+
+  private void cleanUpErrors() {
+    binding.fab.setEnabled(true);
+    binding.titleContainer.setError(null);
   }
 
   @Override
@@ -72,6 +99,44 @@ public final class AddFragment
    */
   private void setupUI()
   {
+    binding.fieldTitle.addTextChangedListener(new TextWatcher() {
+      @Override
+      public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+      }
+
+      @Override
+      public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+      }
+
+      @Override
+      public void afterTextChanged(Editable s) {
+        viewModel.onAction(new FormEvent.TitleChanged(s.toString()));
+      }
+    });
+
+    binding.fieldDescription.addTextChangedListener(new TextWatcher() {
+      @Override
+      public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+      }
+
+      @Override
+      public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+      }
+
+      @Override
+      public void afterTextChanged(Editable s) {
+        viewModel.onAction(new FormEvent.DescriptionChanged(s.toString()));
+      }
+    });
+
+    binding.fab.setOnClickListener(v -> {
+      viewModel.addPost();
+      NavHostFragment.findNavController(this).popBackStack();
+    });
   }
 
 }

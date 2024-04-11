@@ -1,11 +1,12 @@
 package com.openclassrooms.hexagonal.games.data.service;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-
 import com.openclassrooms.hexagonal.games.domain.model.Post;
 import com.openclassrooms.hexagonal.games.domain.model.User;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 /**
  * This class implements the PostApi interface and provides a fake in-memory data source for Posts.
@@ -40,6 +41,8 @@ public final class PostFakeApi
   public List<Post> getPostsOrderByCreationDateDesc()
   {
     posts.sort(Comparator.comparing(post -> post.timestamp));
+    Collections.reverse(posts);
+
     return posts;
   }
 
