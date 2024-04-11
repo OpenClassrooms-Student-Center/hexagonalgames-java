@@ -57,6 +57,9 @@ public final class AddFragment
     observeErrors();
   }
 
+  /**
+   * Observes the ViewModel's error LiveData and updates the UI accordingly.
+   */
   private void observeErrors() {
     viewModel.error.observe(getViewLifecycleOwner(), formError -> {
       if (formError == null) {
@@ -67,12 +70,20 @@ public final class AddFragment
     });
   }
 
+  /**
+   * Displays an error message related to the form title.
+   *
+   * @param messageRes The resource ID of the error message string.
+   */
   private void displayTitleError(@StringRes int messageRes) {
     cleanUpErrors();
     binding.fab.setEnabled(false);
     binding.titleContainer.setError(getString(messageRes));
   }
 
+  /**
+   * Clears any currently displayed error messages.
+   */
   private void cleanUpErrors() {
     binding.fab.setEnabled(true);
     binding.titleContainer.setError(null);
